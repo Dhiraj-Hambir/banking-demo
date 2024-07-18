@@ -31,15 +31,3 @@ ingress {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-  resource "aws_key_pair" "dhiraj-mentor" {
-    key_name   = "dhiraj-mentor"
-  public_key = tls_private_key.rsa.public_key_openssh
-  }
-resource "tls_private_key" "rsa" {
-    algorithm = "RSA"
-  rsa_bits  = 4096
-}
-resource "local_file" "dhiraj-mentor" {
-    content  = tls_private_key.rsa.private_key_pem
-  filename = "dhiraj-mentor"
-}
