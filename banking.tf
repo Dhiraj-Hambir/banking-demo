@@ -125,23 +125,11 @@ resource "aws_eip" "proj-eip" {
 
 
 # Creating an ubuntu EC2 instance
-resource "aws_key_pair" "tf-key-pair" {
-key_name = "tf-key-pair"
-public_key = tls_private_key.rsa.public_key_openssh
-}
-resource "tls_private_key" "rsa" {
-algorithm = "RSA"
-rsa_bits  = 4096
-}
-resource "local_file" "tf-key" {
-content  = tls_private_key.rsa.private_key_pem
-filename = "tf-key-pair"
-}
 resource "aws_instance" "Prod-Server" {
  ami = "ami-0ef82eeba2c7a0eeb"
  instance_type = "t2.micro"
  availability_zone = "ap-south-1b"
- key_name = "tf-key-pair"
+ key_name = "dhiraj-mentor"
  network_interface {
  device_index = 0
  network_interface_id = aws_network_interface.proj-ni.id
