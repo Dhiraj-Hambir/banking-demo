@@ -1,13 +1,13 @@
 provider "aws" {
  region     = "us-east-1"
 }
-resource "aws_instance" "prod-server" {
+resource "aws_instance" "Prod-server" {
   ami                    = "ami-0a0e5d9c7acc336f1"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ownsg.id]
   key_name               = "dhiraj-mentor"
   tags = {
-      Name = "prod-server"
+      Name = "Prod-server"
   } 
 }
 resource "aws_security_group" "ownsg" {
